@@ -1,5 +1,5 @@
 /*
-Template Name: Geodarn
+Template Name: LIKES BAZAAR
 Author: <a href="http://www.os-templates.com/">OS Templates</a>
 Author URI: http://www.os-templates.com/
 Licence: Free to use under our free template licence terms
