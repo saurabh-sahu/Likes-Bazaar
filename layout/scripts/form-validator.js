@@ -69,6 +69,9 @@
                 validators: {
                     notEmpty: {
                         message: 'Please enter your Facebook photo or page url'
+                    },
+                    uri: {
+                        message: 'Please enter a valid URL'
                     }
                 }
             }
