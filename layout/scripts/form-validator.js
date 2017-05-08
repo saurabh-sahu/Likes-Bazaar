@@ -42,10 +42,6 @@
                 validators: {
                     notEmpty: {
                         message: 'Please supply your phone number'
-                    },
-                    phone: {
-                        country: 'US',
-                        message: 'Please supply a vaild phone number with area code'
                     }
                 }
             },
@@ -70,9 +66,6 @@
                 validators: {
                     notEmpty: {
                         message: 'Please enter your Facebook photo or page url'
-                    },
-                    uri: {
-                        message: 'Please enter a valid URL'
                     }
                 }
             }
@@ -86,24 +79,36 @@
 
 $('#contact_form').on('submit', function(e){
 
+    e.preventDefault();
+    e.stopImmediatePropagation();
     var attr = $("#contact_form").serializeArray();
-
+    var error = false;
     $.each(attr, function (index, value) {
         if ( !value.value ) {
-            console.log('returning');
-            return false;
+            console.log('Some values missing');
+            error = true;
         }
     });
     
-    $.ajax({
-        type: "POST",
-        url: 'http://sujokodisha.com/Likes-Bazaar/order.php',
-        data: $("#contact_form").serialize(), // serializes the form's elements.
-        success: function(data)
-        {
-           console.log(data); // show response from the php script.
-        }
-    });
+    if (!error) {
+        $.ajax({
+            type: "POST",
+            url: 'http://sujokodisha.com/Likes-Bazaar/order.php',
+            data: $("#contact_form").serialize(), // serializes the form's elements.
+            success: function(data)
+            {
+                console.log(data);
+                if (data == 'OK') {
+                    $('#success_message').show();
+                    $('#failure_message').hide();
+                    $('#order_button').hide();
+                } else {
+                    $('#failure_message').show();
+                    $('#success_message').hide();
+                }
+            }
+        });
+    }    
     return false;
 
 });

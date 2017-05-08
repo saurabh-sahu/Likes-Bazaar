@@ -163,16 +163,22 @@ Licence URI: http://www.os-templates.com/template-terms
               </div>
 
               <!-- Success message -->
-              <div class="alert alert-success" role="alert" id="success_message">
+              <div class="alert alert-success" style="display:none" role="alert" id="success_message">
                 Success <i class="glyphicon glyphicon-thumbs-up"></i> 
-                Thanks for contacting us, we will get back to you shortly.
+                We sent you a mail. Please click on the link provided in the mail.
+              </div>
+
+              <!-- Failure message -->
+              <div class="alert alert-warning" style="display:none" role="alert" id="failure_message">
+                Oops <i class="glyphicon glyphicon-thumbs-down"></i> 
+                Something's not right! Please try again.
               </div>
 
               <!-- Button -->
               <div class="form-group">
                 <label class="col-md-4 control-label"></label>
                 <div class="col-md-6">
-                  <button type="submit" class="btn btn-warning" >Order <span class="glyphicon glyphicon-send"></span></button>
+                  <button type="submit" class="btn btn-warning" id="order_button" >Order <span class="glyphicon glyphicon-send"></span></button>
                 </div>
               </div>
             </fieldset>
