@@ -8,7 +8,7 @@ Licence URI: http://www.os-templates.com/template-terms
 -->
 <html>
 <head>
-<title>LIKES BAZAAR | ORDER VERIFICATION</title>
+<title>LIKES BAZAAR | Contact Us</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
@@ -32,14 +32,14 @@ Licence URI: http://www.os-templates.com/template-terms
           <li class="active"><a href="../index.html">Home</a></li>
           <li><a class="drop" href="#">Services</a>
             <ul>
-              <li><a href="../pages/facebook-offers.html">Facebook Likes</a></li>
-              <li><a href="../pages/full-width.html">Facebook Fans</a></li>
-              <li><a href="../pages/sidebar-left.html">YouTube Views</a></li>
-              <li><a href="../pages/sidebar-right.html">Twitter Followers</a></li>
+              <li><a href="facebook-offers.html">Facebook Likes</a></li>
+              <li><a href="full-width.html">Facebook Fans</a></li>
+              <li><a href="sidebar-left.html">YouTube Views</a></li>
+              <li><a href="sidebar-right.html">Twitter Followers</a></li>
             </ul>
           </li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
         </ul>
       </nav>
       <!-- ################################################################################################ -->
@@ -67,13 +67,61 @@ Licence URI: http://www.os-templates.com/template-terms
 <div class="wrapper row3">
   <main class="hoc container clear"> 
         <div class="content"> 
-          <h2>Order Now:</h2>
+          <h2>Gen in touch</h2>
+          <form class="well form-horizontal" onsubmit="return false" id="contact_form">
             <fieldset>
+
+              <!-- Text input-->
+
+              <div class="form-group">
+                <label class="col-md-4 control-label">Name</label>  
+                <div class="col-md-6 inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input  name="name" placeholder="Name" class="form-control"  type="text">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label">E-Mail</label>  
+                  <div class="col-md-6 inputGroupContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                      <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+                    </div>
+                </div>
+              </div>
+
+              <!-- Text input-->
+                     
+              <div class="form-group">
+                <label class="col-md-4 control-label">Phone #</label>  
+                  <div class="col-md-6 inputGroupContainer">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                      <input name="phone" placeholder="Phone #" class="form-control" type="text">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text input-->
+                     
+              <div class="form-group">
+                <label class="col-md-4 control-label">Comments</label>  
+                  <div class="col-md-6 inputGroupContainer">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                      <textarea name="comment" placeholder="Your Comments" class="form-control" type="text"></textarea> 
+                  </div>
+                </div>
+              </div>
+
               <!-- Success message -->
               <div class="alert alert-success" style="display:none" role="alert" id="success_message">
-                Congratulations!! <i class="glyphicon glyphicon-thumbs-up"></i> 
-                Your order has been verified. 
-                <br>We will notify you once your order has been completed.
+                Got it<i class="glyphicon glyphicon-thumbs-up"></i> 
+                We'll get back to you soon.
               </div>
 
               <!-- Failure message -->
@@ -82,7 +130,15 @@ Licence URI: http://www.os-templates.com/template-terms
                 Something's not right! Please try again.
               </div>
 
+              <!-- Button -->
+              <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-6">
+                  <button type="submit" class="btn btn-warning" id="send_button" >Send <span class="glyphicon glyphicon-send"></span></button>
+                </div>
+              </div>
             </fieldset>
+          </form>
         </div>
   </main>
 </div>
@@ -112,8 +168,7 @@ Licence URI: http://www.os-templates.com/template-terms
       <ul class="nospace meta">
         <li class="btmspace-10"> <a href="t-c.html" style="color:white"> Terms & Conditions</a> </li>
         <li class="btmspace-10"> <a href="privacy-policy.html" style="color:white"> Privacy Policy</a></li>
-        <li> <a href="refund
-        -policy.html" style="color:white"> Refund Policy</a></li>
+        <li> <a href="refund-policy.html" style="color:white"> Refund Policy</a></li>
       </ul>
     </div>
 
@@ -137,7 +192,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
 <!-- JAVASCRIPTS -->
 <script src="../layout/scripts/jquery.min.js"></script>
-<script src="../layout/scripts/token-verification.js" type="text/javascript"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
+<script src="../layout/scripts/form-validator.js" type="text/javascript"></script>
 <script src="../layout/scripts/jquery.backtotop.js"></script>
 <script src="../layout/scripts/jquery.mobilemenu.js"></script>
 </body>
