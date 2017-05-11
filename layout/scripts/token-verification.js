@@ -15,25 +15,32 @@ $(document).ready(function() {
         }
     };
 
-email = getUrlParameter('email');
-token = getUrlParameter('token');
+    email = getUrlParameter('email');
+    token = getUrlParameter('token');
+    payu  = getUrlParameter('payu');
 
-if ( email && token) {
-        $.ajax({
-            type: "POST",
-            url: 'http://sujokodisha.com/Likes-Bazaar/verify.php',
-            data: { email: email , token: token }, 
-            success: function(data)
-            {
-                console.log( data);
-                if (data !== 'invalid') {
-                    $('#success_message').show();
-                    $('#failure_message').hide();
-                } else {
-                    $('#failure_message').show();
-                    $('#success_message').hide();
+    if (payu == 'success') {
+        $('#success_message').show();
+        $('#failure_message').hide();
+    } else if (payu == 'failure') {
+        $('#failure_message').show();
+        $('#success_message').hide();
+    } else if ( email && token) {
+            $.ajax({
+                type: "POST",
+                url: 'http://sujokodisha.com/Likes-Bazaar/verify.php',
+                data: { email: email , token: token }, 
+                success: function(data)
+                {
+                    console.log( data);
+                    if (data !== 'invalid') {
+                        $('#success_message').show();
+                        $('#failure_message').hide();
+                    } else {
+                        $('#failure_message').show();
+                        $('#success_message').hide();
+                    }
                 }
-            }
-        });
+            });
     }    
 });

@@ -66,8 +66,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <div class="wrapper row3">
   <main class="hoc container clear"> 
-        <div class="content"> 
-          <h2>Order Now:</h2>
+        <h2>Order Now:</h2>
+        <div class="content first two_third"> 
           <form class="well form-horizontal" onsubmit="return false" id="order_form">
             <fieldset>
 
@@ -78,7 +78,7 @@ Licence URI: http://www.os-templates.com/template-terms
                 <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+                    <input  name="first_name" required placeholder="First Name" class="form-control"  type="text">
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@ Licence URI: http://www.os-templates.com/template-terms
                   <div class="col-md-6 inputGroupContainer">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                      <input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+                      <input name="last_name" required placeholder="Last Name" class="form-control"  type="text">
                     </div>
                 </div>
               </div>
@@ -101,7 +101,7 @@ Licence URI: http://www.os-templates.com/template-terms
                   <div class="col-md-6 inputGroupContainer">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                      <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+                      <input name="email" required placeholder="E-Mail Address" class="form-control"  type="text">
                     </div>
                 </div>
               </div>
@@ -114,7 +114,7 @@ Licence URI: http://www.os-templates.com/template-terms
                   <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                <input name="phone" placeholder="Phone #" class="form-control" type="text">
+                      <input name="phone" required placeholder="Phone #" class="form-control" type="text">
                   </div>
                 </div>
               </div>
@@ -126,7 +126,7 @@ Licence URI: http://www.os-templates.com/template-terms
                   <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                <input name="city" placeholder="city" class="form-control"  type="text">
+                      <input name="city" required placeholder="city" class="form-control"  type="text">
                   </div>
                 </div>
               </div>
@@ -137,17 +137,17 @@ Licence URI: http://www.os-templates.com/template-terms
                 <label class="col-md-4 control-label">Package</label>
                   <div class="col-md-6 selectContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                    <select name="package" class="form-control selectpicker" >
-                      <option value=" " >Please select your package</option>
-                      <option>50 Facebook Likes</option>
-                      <option>100 Facebook Likes</option>
-                      <option>500 Facebook Likes</option>
-                      <option>1000 Facebook Likes</option>
-                      <option>2500 Facebook Likes</option>
-                      <option>5000 Facebook Likes</option>
-                    </select>
-                  </div>
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                      <select name="package" id="package" required class="form-control selectpicker" >
+                        <option value=" " >Select your package</option>
+                        <option>10 Facebook Likes</option>
+                        <option>50 Facebook Likes</option>
+                        <option>100 Facebook Likes</option>
+                        <option>500 Facebook Likes</option>
+                        <option>1000 Facebook Likes</option>
+                        <option>2500 Facebook Likes</option>
+                      </select>
+                    </div>
                 </div>
               </div>
 
@@ -157,7 +157,7 @@ Licence URI: http://www.os-templates.com/template-terms
                  <div class="col-md-6 inputGroupContainer">
                   <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                <input name="url" placeholder="Facebook URL" class="form-control" type="text">
+                      <input name="url" required placeholder="Facebook URL" class="form-control" type="text">
                   </div>
                 </div>
               </div>
@@ -174,16 +174,31 @@ Licence URI: http://www.os-templates.com/template-terms
                 Something's not right! Please try again.
               </div>
 
-              <!-- Button -->
+              <!-- Button 
               <div class="form-group">
                 <label class="col-md-4 control-label"></label>
                 <div class="col-md-6">
-                  <button type="submit" class="btn btn-warning" id="order_button" >Order <span class="glyphicon glyphicon-send"></span></button>
+                  <button type="submit" class="btn btn-warning"  >Order <span class="glyphicon glyphicon-send"></span></button>
                 </div>
-              </div>
+              </div>-->
             </fieldset>
           </form>
         </div>
+
+          <div class=" content one_third ">
+            <div id="pricing-table"  >
+              <div class="plan" >
+                  <h3>Likes Bazaar<span id="cost">₹0</span></h3>
+                  <ul>
+                      <li><b><span id="number_of_likes"></span></b> Facebook Likes</li>
+                      <li>Delivered in <b><span id="no_of_days">some days</span> </b> </li>
+                      <li>Make sure you've read <a href="how-to-use.html">How to Use</a></li>
+                      <li>By clicking on buy now, you agree to our <a href="t-c.html">Terms</a> & confirm that you have read our <a href="privacy-policy.html">privacy</a> & <a href="refund-policy.html">refund</a> policy.</li>
+                  </ul>    
+                  <div class="pm-button" id="order_button" ><img src="https://www.payumoney.com//media/images/payby_payumoney/buttons/222.png" /></div>     
+              </div>
+            </div>
+          </div>
   </main>
 </div>
 <div class="wrapper row4 bgded overlay" style="background-image:url('../images/demo/backgrounds/footer-background.png');">
