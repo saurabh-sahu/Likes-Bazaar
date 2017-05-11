@@ -129,10 +129,47 @@
 
 });
 
+//Cost by package.
+$('#package').on('change', function(e) {
+    switch ($('#package').val()) {
+        case '10 Facebook Likes':
+            $("#number_of_likes").text('10');
+            $("#no_of_days").text('1 Day');
+            $("#cost").text('₹0');
+            break;
+        case '50 Facebook Likes':
+            $("#number_of_likes").text('50');
+            $("#no_of_days").text('1-2 Days');
+            $("#cost").text('₹49');
+            break;
+        case '100 Facebook Likes':
+            $("#number_of_likes").text('100');
+            $("#no_of_days").text('2-3 Days');
+            $("#cost").text('₹89');
+            break;
+        case '500 Facebook Likes':
+            $("#number_of_likes").text('500');
+            $("#no_of_days").text('3-4 Days');
+            $("#cost").text('₹399');
+            break;
+        case '1000 Facebook Likes':
+            $("#number_of_likes").text('1000');
+            $("#no_of_days").text('4-5 Days');
+            $("#cost").text('₹799');
+            break;
+        case '2500 Facebook Likes':
+            $("#number_of_likes").text('2500');
+            $("#no_of_days").text('5-7 Day');
+            $("#cost").text('₹1999');
+            break;
+    }   
+});
+
 // Order form submit.
-$('#order_form').on('submit', function(e){
+$('#order_button').on('click', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
+    var id = null;
     var attr = $("#order_form").serializeArray();
     var error = false;
     $.each(attr, function (index, value) {
@@ -141,6 +178,24 @@ $('#order_form').on('submit', function(e){
             error = true;
         }
     });
+
+    switch (attr['5'].value) {
+        case '50 Facebook Likes':
+            id = '309113';
+            break;
+        case '100 Facebook Likes':
+            id = 'FC0287F0B9332821B296978DEDDCCBB2';
+            break;
+        case '500 Facebook Likes':
+            id = 'DD669E225E4008CAF4AF0915E610A4BB';
+            break;
+        case '1000 Facebook Likes':
+            id = '3A5AD586428B79EDF3AB3231D42C9E97';
+            break;
+        case '2500 Facebook Likes':
+            id = '1C907F79C644EBA57FFBE18A020636F0';
+            break;
+    }   
     if (!error) {
         $.ajax({
             type: "POST",
@@ -150,8 +205,12 @@ $('#order_form').on('submit', function(e){
             {
                 console.log(data);
                 if (data == 'OK') {
-                    $('#success_message').show();
-                    $('#failure_message').hide();
+                    if (attr[5].value == '10 Facebook Likes') {
+                        $('#success_message').show();
+                        $('#failure_message').hide();    
+                    } else {
+                        window.location = 'https://www.payumoney.com/paybypayumoney/#/' + id;
+                    }
                     $('#order_button').hide();
                 } else {
                     $('#failure_message').show();
