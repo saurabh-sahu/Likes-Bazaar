@@ -8,6 +8,16 @@
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
+            restaurant_name: {
+                validators: {
+                        stringLength: {
+                        min: 2
+                    },
+                        notEmpty: {
+                        message: 'Please give your restaurant name'
+                    }
+                }
+            },
             first_name: {
                 validators: {
                         stringLength: {
@@ -72,7 +82,19 @@
                         message: 'Please enter your Facebook photo or page url'
                     }
                 }
+            },
+            zomato_url: {
+                validators: {
+                    regexp: {
+                        regexp: /https:\/\/www\.zomato\.com/,
+                        message: 'This doesn\'t look like a facebook URL. Please follow <a href="how-to-use.html">how to use</a>.'
+                    },
+                    notEmpty: {
+                        message: 'Please enter your Facebook photo or page url'
+                    }
+                }
             }
+
         },
         })
         .on('success.form.bv', function(e) {
@@ -133,7 +155,7 @@
 
 });
 
-//Cost by package.
+//Cost by package for FACEBOOK
 $('#package').on('change', function(e) {
     switch ($('#package').val()) {
         case '10 Facebook Likes':
@@ -169,11 +191,48 @@ $('#package').on('change', function(e) {
     }   
 });
 
+//Cost by package for ZOMATO
+$('#zomato_package').on('change', function(e) {
+    switch ($('#zomato_package').val()) {
+        case '10 Reviews':
+            $("#number_of_reviews").text('10');
+            $("#no_of_days").text('5 Day');
+            $("#cost").text('₹0');
+            break;
+        case '50 Reviews':
+            $("#number_of_reviews").text('50');
+            $("#no_of_days").text('20 Days');
+            $("#cost").text('₹49');
+            break;
+        case '100 Reviews':
+            $("#number_of_reviews").text('100');
+            $("#no_of_days").text('~45 Days');
+            $("#cost").text('₹89');
+            break;
+        case '150 Reviews':
+            $("#number_of_reviews").text('150');
+            $("#no_of_days").text('~70 Days');
+            $("#cost").text('₹399');
+            break;
+        case '200 Reviews':
+            $("#number_of_reviews").text('200');
+            $("#no_of_days").text('~100 Days');
+            $("#cost").text('₹799');
+            break;
+        case '300 Reviews':
+            $("#number_of_reviews").text('300');
+            $("#no_of_days").text('~125 Day');
+            $("#cost").text('₹1999');
+            break;
+    }   
+});
+
 // Order form submit.
 $('#order_button').on('click', function(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
     var id = null;
+    var free = false;
     var attr = $("#order_form").serializeArray();
     var error = false;
     $.each(attr, function (index, value) {
@@ -183,23 +242,52 @@ $('#order_button').on('click', function(e) {
         }
     });
 
-    switch (attr['5'].value) {
-        case '50 Facebook Likes':
-            id = '309113';
-            break;
-        case '100 Facebook Likes':
-            id = 'FC0287F0B9332821B296978DEDDCCBB2';
-            break;
-        case '500 Facebook Likes':
-            id = 'DD669E225E4008CAF4AF0915E610A4BB';
-            break;
-        case '1000 Facebook Likes':
-            id = '3A5AD586428B79EDF3AB3231D42C9E97';
-            break;
-        case '2500 Facebook Likes':
-            id = '1C907F79C644EBA57FFBE18A020636F0';
-            break;
-    }   
+    if ( attr['0'].name == "restaurant_name" ) {
+
+        switch (attr['3'].value) {
+            case '10 Reviews':
+                free = true;
+                break;
+            case '50 Reviews':
+                id = 'EC592AA3FE037AB8871395DE5D5C2C2A';
+                break;
+            case '100 Reviews':
+                id = '3ED29F94A41F794DC2D41DB8DD797508';
+                break;
+            case '150 Reviews':
+                id = '17D2AFA5005E612F0ABE90BF20A3C40E';
+                break;
+            case '200 Reviews':
+                id = 'A56E36BBFE82AF036B758A81C4DEBB5A';
+                break;
+            case '300 Reviews':
+                id = '310641';
+                break;
+        }
+
+    } else {
+        switch (attr['5'].value) {
+            case '10 Facebook Likes':
+                free = true;
+                break;
+            case '50 Facebook Likes':
+                id = '309113';
+                break;
+            case '100 Facebook Likes':
+                id = 'FC0287F0B9332821B296978DEDDCCBB2';
+                break;
+            case '500 Facebook Likes':
+                id = 'DD669E225E4008CAF4AF0915E610A4BB';
+                break;
+            case '1000 Facebook Likes':
+                id = '3A5AD586428B79EDF3AB3231D42C9E97';
+                break;
+            case '2500 Facebook Likes':
+                id = '1C907F79C644EBA57FFBE18A020636F0';
+                break;
+        }   
+    }
+
     if (!error) {
         $.ajax({
             type: "POST",
@@ -209,7 +297,7 @@ $('#order_button').on('click', function(e) {
             {
                 console.log(data);
                 if (data == 'OK') {
-                    if (attr[5].value == '10 Facebook Likes') {
+                    if (free) {
                         $('#success_message').show();
                         $('#failure_message').hide();    
                     } else {
