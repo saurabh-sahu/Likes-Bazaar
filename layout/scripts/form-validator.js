@@ -272,7 +272,7 @@ $('#order_button').on('click', function(e) {
 
     } else if ( attr['0'].name == "first_name" ) {
 
-        urlPath = 'faceook-order.php';
+        urlPath = 'facebook-order.php';
 
         switch (attr['5'].value) {
             case '10 Facebook Likes':
@@ -318,6 +318,12 @@ $('#order_button').on('click', function(e) {
                     $('#failure_message').show();
                     $('#success_message').hide();
                 }
+            },
+            error: function(data)
+            {
+                $('#failure_message').show();
+                $('#success_message').hide();
+                $('#order_button').hide();
             }
         });
     }    
