@@ -301,7 +301,7 @@ $('#order_button').on('click', function(e) {
     if (!error) {
         $.ajax({
             type: "POST",
-            url: 'http://sujokodisha.com/Likes-Bazaar/' + urlPath,
+            url: 'http://sujokodisha.com/Likes-Bazaar/place-order/' + urlPath,
             data: $("#order_form").serialize(), 
             success: function(data)
             {
@@ -323,7 +323,7 @@ $('#order_button').on('click', function(e) {
             {
                 $('#failure_message').show();
                 $('#success_message').hide();
-                $('#order_button').hide();
+
             }
         });
     }    
@@ -346,7 +346,7 @@ $('#contact_form').on('submit', function(e){
     if (!error) {
         $.ajax({
             type: "POST",
-            url: 'http://sujokodisha.com/Likes-Bazaar/contact-us.php',
+            url: 'http://sujokodisha.com/Likes-Bazaar/contact-us/contact-us.php',
             data: $("#contact_form").serialize(), 
             success: function(data)
             {

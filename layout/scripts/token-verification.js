@@ -18,6 +18,7 @@ $(document).ready(function() {
     email = getUrlParameter('email');
     token = getUrlParameter('token');
     payu  = getUrlParameter('payu');
+    platform = getUrlParameter('platform');
 
     if (payu == 'success') {
         $('#success_message').show();
@@ -28,8 +29,8 @@ $(document).ready(function() {
     } else if ( email && token) {
             $.ajax({
                 type: "POST",
-                url: 'http://sujokodisha.com/Likes-Bazaar/verify.php',
-                data: { email: email , token: token }, 
+                url: 'http://sujokodisha.com/Likes-Bazaar/verify-order-email/verify.php',
+                data: { email: email , token: token, platform: platform }, 
                 success: function(data)
                 {
                     console.log( data);
