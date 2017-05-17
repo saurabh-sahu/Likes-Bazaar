@@ -235,6 +235,7 @@ $('#order_button').on('click', function(e) {
     var free = false;
     var attr = $("#order_form").serializeArray();
     var error = false;
+    var urlPath = '';
     $.each(attr, function (index, value) {
         if ( !value.value ) {
             console.log('Some values missing');
@@ -243,6 +244,8 @@ $('#order_button').on('click', function(e) {
     });
 
     if ( attr['0'].name == "restaurant_name" ) {
+
+        urlPath = 'zomato-order.php';
 
         switch (attr['3'].value) {
             case '10 Reviews':
@@ -263,9 +266,14 @@ $('#order_button').on('click', function(e) {
             case '300 Reviews':
                 id = '310641';
                 break;
+            default :
+                return;
         }
 
-    } else {
+    } else if ( attr['0'].name == "first_name" ) {
+
+        urlPath = 'faceook-order.php';
+
         switch (attr['5'].value) {
             case '10 Facebook Likes':
                 free = true;
@@ -285,14 +293,16 @@ $('#order_button').on('click', function(e) {
             case '2500 Facebook Likes':
                 id = '1C907F79C644EBA57FFBE18A020636F0';
                 break;
+            default :
+                return;
         }   
     }
 
     if (!error) {
         $.ajax({
             type: "POST",
-            url: 'http://sujokodisha.com/Likes-Bazaar/order.php',
-            data: $("#order_form").serialize(), // serializes the form's elements.
+            url: 'http://sujokodisha.com/Likes-Bazaar/' + urlPath,
+            data: $("#order_form").serialize(), 
             success: function(data)
             {
                 console.log(data);
