@@ -82,19 +82,7 @@
                         message: 'Please enter your Facebook photo or page url'
                     }
                 }
-            },
-            zomato_url: {
-                validators: {
-                    regexp: {
-                        regexp: /https:\/\/www\.zomato\.com/,
-                        message: 'This doesn\'t look like a facebook URL. Please follow <a href="how-to-use.html">how to use</a>.'
-                    },
-                    notEmpty: {
-                        message: 'Please enter your Facebook photo or page url'
-                    }
-                }
             }
-
         },
         })
         .on('success.form.bv', function(e) {
